@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:yesnoapp/domain/entities/message.dart';
+import 'package:yesnoapp/presentation/providers/chat_provide.dart';
 
 class MyMessageBurble extends StatelessWidget {
-  const MyMessageBurble({super.key});
+  final Message message;
+
+  const MyMessageBurble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -13,11 +16,11 @@ class MyMessageBurble extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: colors.primary, borderRadius: BorderRadius.circular(20)),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Deserunt dolore',
-              style: TextStyle(color: Colors.white),
+              message.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
